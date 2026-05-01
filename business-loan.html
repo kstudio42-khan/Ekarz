@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Business Loan – Ekarz Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green:#16a34a;--green-light:#22c55e;--green-pale:#dcfce7;--green-dark:#15803d;--green-xdark:#14532d;
+    --white:#ffffff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;
+    --gray-600:#4b5563;--gray-800:#1f2937;--gray-900:#111827;
+    --radius:16px;--radius-sm:8px;
+    --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.09);--shadow-lg:0 12px 40px rgba(22,163,74,.13);
+    --transition:.28s cubic-bezier(.4,0,.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--gray-900);background:var(--white);overflow-x:hidden;line-height:1.6;}
+  h1,h2,h3,h4,h5{font-family:'Sora',sans-serif;line-height:1.25;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:0 5vw;}
+  .nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:10px;display:flex;align-items:center;justify-content:center;}
+  .logo-icon svg{width:22px;height:22px;fill:white;}
+  .logo-text{font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:800;color:var(--gray-900);letter-spacing:-.3px;}
+  .logo-text span{color:var(--green);}
+  .nav-back{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:600;font-size:.9rem;text-decoration:none;border:2px solid var(--green);padding:8px 20px;border-radius:50px;transition:all var(--transition);}
+  .nav-back:hover{background:var(--green);color:white;}
+
+  /* HERO */
+  .loan-hero{background:linear-gradient(160deg,var(--green-pale) 0%,#f0fdf4 60%,white 100%);padding:70px 5vw 60px;overflow:hidden;}
+  .loan-hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .loan-hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-pale);border:1px solid rgba(22,163,74,.3);color:var(--green-dark);font-size:.8rem;font-weight:600;padding:6px 14px;border-radius:50px;margin-bottom:20px;}
+  .loan-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--gray-900);margin-bottom:18px;}
+  .loan-hero h1 span{color:var(--green);}
+  .loan-hero p{font-size:1.05rem;color:var(--gray-600);line-height:1.75;margin-bottom:28px;}
+  .loan-hero-img{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;}
+  .loan-hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* FEATURES */
+  .features-ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .features-ul li{background:white;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);padding:12px 16px;font-size:.9rem;font-weight:500;color:var(--gray-800);}
+
+  /* SECTION */
+  section{padding:72px 5vw;}
+  .section-label{display:inline-block;font-size:.8rem;font-weight:700;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--gray-900);margin-bottom:14px;}
+
+  /* EMI CALCULATOR */
+  #emi-section{background:var(--gray-50);}
+  .emi-inner{max-width:900px;margin:auto;}
+  .emi-card{background:white;border-radius:24px;padding:48px;box-shadow:var(--shadow-lg);border:1.5px solid var(--gray-200);}
+  .emi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:32px;}
+  .field-group{display:flex;flex-direction:column;gap:8px;}
+  .field-group label{font-size:.85rem;font-weight:600;color:var(--gray-800);}
+  .field-group input{padding:14px 16px;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);font-size:.95rem;font-family:inherit;outline:none;transition:border-color var(--transition),box-shadow var(--transition);}
+  .field-group input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.12);}
+  .emi-results{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;padding-top:28px;border-top:1.5px solid var(--gray-100);}
+  .emi-result-item{text-align:center;background:var(--gray-50);border-radius:var(--radius-sm);padding:20px;}
+  .emi-result-item strong{display:block;font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:800;color:var(--green);margin-bottom:6px;}
+  .emi-result-item span{font-size:.82rem;color:var(--gray-600);font-weight:500;}
+
+  /* APPLICATION FORM */
+  #apply-section{background:white;}
+  .apply-inner{max-width:700px;margin:auto;}
+  .form-wrap{background:linear-gradient(150deg,#f0fdf4,white);border:1.5px solid var(--gray-200);border-radius:24px;padding:48px;box-shadow:var(--shadow-lg);}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .form-group{display:flex;flex-direction:column;gap:7px;}
+  .form-group.full{grid-column:1/-1;}
+  .form-group label{font-size:.85rem;font-weight:600;color:var(--gray-800);}
+  .form-control{padding:13px 16px;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);font-size:.92rem;font-family:inherit;color:var(--gray-900);background:white;transition:border-color var(--transition),box-shadow var(--transition);outline:none;}
+  .form-control:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.12);}
+  .form-control[readonly]{background:var(--gray-50);cursor:default;}
+  .btn-primary{background:var(--green);color:white;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:background var(--transition),transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 20px rgba(22,163,74,.35);width:100%;margin-top:8px;}
+  .btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);}
+  .success-msg{display:none;background:var(--green-pale);border:1.5px solid rgba(22,163,74,.3);border-radius:var(--radius-sm);padding:20px;text-align:center;color:var(--green-dark);font-weight:600;margin-top:20px;}
+  .success-msg.show{display:block;}
+
+  /* FOOTER */
+  footer{background:var(--gray-900);color:white;padding:40px 5vw;}
+  .footer-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .footer-brand{display:flex;align-items:center;gap:10px;}
+  .footer-brand .logo-text{color:white;font-size:1.1rem;}
+  .footer-brand .logo-text span{color:var(--green-light);}
+  .footer-copy{color:rgba(255,255,255,.4);font-size:.8rem;}
+
+  /* RESPONSIVE */
+  @media(max-width:1023px){
+    .loan-hero-inner{grid-template-columns:1fr;text-align:center;gap:36px;}
+    .features-ul{grid-template-columns:1fr;}
+    .emi-grid{grid-template-columns:1fr;}
+    .emi-results{grid-template-columns:1fr;}
+  }
+  @media(max-width:640px){
+    .form-grid{grid-template-columns:1fr;}
+    .emi-card{padding:28px 20px;}
+    .form-wrap{padding:28px 20px;}
+    .footer-inner{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-text">Ekarz<span> Finance</span></span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="loan-hero">
+  <div class="loan-hero-inner">
+    <div>
+      <div class="loan-hero-badge">🏢 Business Loan</div>
+      <h1><span>Business Loan</span></h1>
+      <p>Fuel your business growth with secured and unsecured loans tailored for SMEs and startups.</p>
+      <ul class="features-ul">
+        <li>✅ Loan as much as your buisness need</li>
+<li>✅ Quick disbursal</li>
+<li>✅ Flexible EMI options</li>
+<li>✅ Minimal documentation</li>
+<li>✅ Secured & unsecured options</li>
+<li>✅ Business-friendly tenure</li>
+      </ul>
+    </div>
+    <div class="loan-hero-img">
+      <img src="./img/business.jpg" alt="Business Loan" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- DESCRIPTION -->
+<section style="background:white;padding:60px 5vw;">
+  <div style="max-width:900px;margin:auto;">
+    <span class="section-label">Overview</span>
+    <h2 class="section-title">About Business Loan</h2>
+    <p style="font-size:1rem;color:var(--gray-600);line-height:1.85;margin-top:12px;">Whether you're a startup looking for initial capital or an established business seeking expansion funds, Ekarz Finance offers comprehensive Business Loan solutions. We partner with India's top lenders to bring you competitive interest rates, flexible repayment terms, and fast disbursal — so you can focus on growing your business.</p>
+  </div>
+</section>
+
+<!-- EMI CALCULATOR -->
+<section id="emi-section">
+  <div class="emi-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="section-label">Tools</span>
+      <h2 class="section-title">EMI Calculator</h2>
+      <p style="color:var(--gray-600);font-size:.97rem;">Estimate your monthly EMI instantly.</p>
+    </div>
+    <div class="emi-card">
+      <div class="emi-grid">
+        <div class="field-group">
+          <label>Loan Amount (₹)</label>
+          <input type="number" id="loanAmt" value="500000" min="10000" oninput="calcEMI()" />
+        </div>
+        <div class="field-group">
+          <label>Annual Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="12" min="1" max="36" step="0.1" oninput="calcEMI()" />
+        </div>
+        <div class="field-group">
+          <label>Tenure (Months)</label>
+          <input type="number" id="tenure" value="36" min="1" max="360" oninput="calcEMI()" />
+        </div>
+      </div>
+      <div class="emi-results">
+        <div class="emi-result-item">
+          <strong id="emiVal">₹16,607</strong>
+          <span>Monthly EMI</span>
+        </div>
+        <div class="emi-result-item">
+          <strong id="totalInterest">₹97,852</strong>
+          <span>Total Interest</span>
+        </div>
+        <div class="emi-result-item">
+          <strong id="totalPayment">₹5,97,852</strong>
+          <span>Total Payment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section id="apply-section">
+  <div class="apply-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="section-label">Apply</span>
+      <h2 class="section-title">Apply for Business Loan</h2>
+      <p style="color:var(--gray-600);font-size:.97rem;">Fill in your details and our team will contact you within 24 hours.</p>
+    </div>
+    <div class="form-wrap">
+      <form id="applyForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" id="fName" placeholder="Rahul Sharma" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" class="form-control" id="fPhone" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" id="fEmail" placeholder="rahul@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Loan Type</label>
+            <input type="text" class="form-control" id="fType" value="Business Loan" readonly />
+          </div>
+          <div class="form-group full">
+            <label>Loan Amount Required (₹)</label>
+            <input type="number" class="form-control" id="fAmount" placeholder="e.g. 500000" min="10000" required />
+          </div>
+          <div class="form-group full">
+            <button type="submit" class="btn-primary">Submit Application</button>
+          </div>
+        </div>
+      </form>
+      <div class="success-msg" id="successMsg">
+        ✅ Your request has been received! Our team will contact you within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-icon" style="width:36px;height:36px;border-radius:9px;"><svg viewBox="0 0 24 24" style="width:20px;height:20px;" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="logo-text">Ekarz<span> Finance</span></span>
+    </div>
+    <p class="footer-copy">© 2025 Ekarz Finance. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function calcEMI() {
+    const P = parseFloat(document.getElementById('loanAmt').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+    const N = parseInt(document.getElementById('tenure').value) || 1;
+    const r = annualRate / 12 / 100;
+    let emi = 0, totalPayment = 0, totalInterest = 0;
+    if (r === 0) {
+      emi = P / N;
+    } else {
+      emi = (P * r * Math.pow(1 + r, N)) / (Math.pow(1 + r, N) - 1);
+    }
+    totalPayment = emi * N;
+    totalInterest = totalPayment - P;
+    const fmt = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+    document.getElementById('emiVal').textContent = fmt(emi);
+    document.getElementById('totalInterest').textContent = fmt(totalInterest);
+    document.getElementById('totalPayment').textContent = fmt(totalPayment);
+  }
+
+  calcEMI(); // init on load
+
+  document.getElementById('applyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name = document.getElementById('fName').value;
+    const phone = document.getElementById('fPhone').value;
+    const email = document.getElementById('fEmail').value;
+    const type = document.getElementById('fType').value;
+    const amount = parseFloat(document.getElementById('fAmount').value);
+    if (!name || !phone || !email || !amount) { alert('Please fill all fields.'); return; }
+    
+    const payload = {
+      name: name,
+      contact: phone,
+      loanType: type,
+      amount: amount,
+      status: 'Pending'
+    };
+
+    try {
+      const response = await fetch('https://ekarz-backend.onrender.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) throw new Error('Server error');
+      document.getElementById('applyForm').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+    } catch (err) {
+      alert('Failed to submit. Please try again later.');
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>
